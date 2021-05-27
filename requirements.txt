@@ -6,3 +6,4 @@ joblib
 sklearn
 google
 google-colab
+pickle
