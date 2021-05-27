@@ -9,8 +9,7 @@ Original file is located at
 
 import warnings
 warnings.filterwarnings('ignore')
-
-from sklearn.externals import joblib
+import joblib
 import streamlit as st
 
 fileloc = 'https://github.com/knowminni/mobile-price/blob/main/SVM_Model.pkl'
