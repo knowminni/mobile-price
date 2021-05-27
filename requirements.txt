@@ -2,7 +2,4 @@ numpy
 pandas
 seaborn
 streamlit
-joblib
 sklearn
-requests
-
