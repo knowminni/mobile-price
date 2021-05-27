@@ -4,6 +4,8 @@ seaborn
 streamlit
 joblib
 sklearn
+io
+requests
 google
 google-colab
 pickle
