@@ -10,16 +10,12 @@ Original file is located at
 import warnings
 warnings.filterwarnings('ignore')
 
-import pickle
-from io import BytesIO
-import requests
-
+from sklearn.externals import joblib
 import streamlit as st
 
 fileloc = 'https://github.com/knowminni/mobile-price/blob/main/SVM_Model.pkl'
 
-mfile = BytesIO(requests.get(fileloc).content)
-model = pickle.load(mfile)
+model = joblib.load('SVM_Model.pkl')
 
 
 names = ['Battery', 'Bluetooth', 'ClockSpeed', 'DualSim', 'FrontCam',
