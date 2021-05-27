@@ -10,17 +10,18 @@ Original file is located at
 import warnings
 warnings.filterwarnings('ignore')
 
-from google.colab import files
-import io
+import pickle
+from io import BytesIO
+import requests
 
 from sklearn.externals import joblib
 import streamlit as st
 
-data = files.upload()
+fileloc = 'https://github.com/knowminni/mobile-price/blob/main/SVM_Model.pkl'
 
-model = joblib.load('SVM_Model.pkl')
+mfile = BytesIO(requests.get(fileloc).content)
+model = pickle.load(mfile)
 
-print(model)
 
 names = ['Battery', 'Bluetooth', 'ClockSpeed', 'DualSim', 'FrontCam',
          'FourG', 'Internal', 'Depth', 'Weight', 'NumCores',
