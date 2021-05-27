@@ -14,7 +14,6 @@ import pickle
 from io import BytesIO
 import requests
 
-from sklearn.externals import joblib
 import streamlit as st
 
 fileloc = 'https://github.com/knowminni/mobile-price/blob/main/SVM_Model.pkl'
