@@ -26,27 +26,36 @@ st.title('Mobile Price Prediction App')
 st.header('Input Device Specifications: ')
 
 
-bat = st.number_input(label = 'Battery Capacity: ', min_value = 500, value = 500, format = '%d')
-blue = st.radio(label = 'Bluetooth: ', options = ['Yes', 'No'])
-clk = st.number_input(label = 'Clock Speed: ', min_value = 0.5, max_value = 5.0, step = 0.1)
-dsim = st.radio(label = 'Dual Sim: ', options = ['Yes', 'No'])
-frcam = st.number_input(label = 'Front Camera: ', min_value = 2, value = 128, format = '%d')
+def input():
+    bat = st.number_input(label = 'Battery Capacity: ', min_value = 500, value = 500, format = '%d')
+    blue = st.checkbox('Bluetooth')
+    clk = st.number_input(label = 'Clock Speed: ', min_value = 0.5, max_value = 5.0, step = 0.1)
+    dsim = st.checkbox('Dual Sim')
+    frcam = st.number_input(label = 'Front Camera: ', min_value = 2, value = 128, format = '%d')
 
-fourg = st.checkbox('4G Connectivity')
-intermem = st.number_input(label = 'Internal Memory: ', min_value = 0.5, max_value = 1024.0)
-depth = st.number_input(label = 'Depth: ', min_value = 0.1, max_value = 1.0)
-wt = st.number_input(label = 'Weight: ', min_value= 30, max_value = 250)
-numcore = st.number_input('CPU cores: ', min_value = 1, max_value = 16)
+    fourg = st.checkbox('4G Connectivity')
+    intermem = st.number_input(label = 'Internal Memory: ', min_value = 0.5, max_value = 1024.0)
+    depth = st.number_input(label = 'Depth: ', min_value = 0.1, max_value = 1.0)
+    wt = st.number_input(label = 'Weight: ', min_value= 30, max_value = 250)
+    numcore = st.number_input('CPU cores: ', min_value = 1, max_value = 16)
 
-prcam = st.number_input(label = 'Primary Camera: ', min_value = 2, value = 128, format = '%d')
-pxht = st.number_input(label = 'Pixel Height: ', min_value= 500, max_value = 1960)
-pxwd = st.number_input(label = 'Pixel Width: ', min_value= 500, max_value = 1960)
-ram = st.number_input(label = 'RAM: ', min_value = 0.5, max_value = 1024.0)
-scht = st.number_input(label = 'Screen Height: ', min_value= 500, max_value = 1960)
-scwd = st.number_input(label = 'Screen Width: ', min_value= 500, max_value = 1960)
+    prcam = st.number_input(label = 'Primary Camera: ', min_value = 2, value = 128, format = '%d')
+    pxht = st.number_input(label = 'Pixel Height: ', min_value= 500, max_value = 1960)
+    pxwd = st.number_input(label = 'Pixel Width: ', min_value= 500, max_value = 1960)
+    ram = st.number_input(label = 'RAM: ', min_value = 0.5, max_value = 1024.0)
+    scht = st.number_input(label = 'Screen Height: ', min_value= 500, max_value = 1960)
+    scwd = st.number_input(label = 'Screen Width: ', min_value= 500, max_value = 1960)
 
-taktim = st.number_input(label = 'Talktime: ', min_value= 1, max_value = 200)
-threeg = st.checkbox('3G Connectivity')
-touch = st.checkbox('Touch Screen')
-wifi = st.checkbox('WiFi Connectivity')
+    taktim = st.number_input(label = 'Talktime: ', min_value= 1, max_value = 200)
+    threeg = st.checkbox('3G Connectivity')
+    touch = st.checkbox('Touch Screen')
+    wifi = st.checkbox('WiFi Connectivity')
 
+    inpdata = {'Battery' : bat, 'Bluetooth' : blue, 'ClockSpeed' : clk, 'DualSim' : dsim, 'FrontCam' : frcam,
+         'FourG' : fourg, 'Internal' : intermem, 'Depth' : depth, 'Weight' : wt, 'NumCores' : numcore,
+         'PrimaryCam' : prcam, 'PxHeight' : pxht, 'PxWidth' : pxwd, 'Ram' : ram, 'ScHeight' : scht, 'ScWidth' : scwd,
+         'TalkTime' : taktim, 'ThreeG' : threeg, 'Touch' : touch, 'WiFi' : wifi}
+
+    print(inpdata)
+    
+  input()
