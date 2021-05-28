@@ -12,21 +12,23 @@ warnings.filterwarnings('ignore')
 import joblib
 import streamlit as st
 
-fileloc = 'https://github.com/knowminni/mobile-price/blob/main/SVM_Model.pkl'
-
 model = joblib.load('SVM_Model.pkl')
 
+def prediction(bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore,
+                  prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi):
+    
+    inputdata = [[bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore,
+                  prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi]]
+    
+    pred = model.predict(inputdata)
+    return pred
+   
 
-names = ['Battery', 'Bluetooth', 'ClockSpeed', 'DualSim', 'FrontCam',
-         'FourG', 'Internal', 'Depth', 'Weight', 'NumCores',
-         'PrimaryCam', 'PxHeight', 'PxWidth', 'Ram', 'ScHeight', 'ScWidth',
-         'TalkTime', 'ThreeG', 'Touch', 'WiFi', 'PriceRange']
-
-st.title('Mobile Price Prediction App')
-st.header('Input Device Specifications: ')
-
-
-def input():
+def main():
+    
+    st.title('Mobile Price Prediction App')
+    st.header('Input Device Specifications: ')
+    
     bat = st.number_input(label = 'Battery Capacity: ', min_value = 500, value = 500, format = '%d')
     blue = st.checkbox('Bluetooth')
     clk = st.number_input(label = 'Clock Speed: ', min_value = 0.5, max_value = 5.0, step = 0.1)
@@ -51,11 +53,16 @@ def input():
     touch = st.checkbox('Touch Screen')
     wifi = st.checkbox('WiFi Connectivity')
 
-    inpdata = {'Battery' : bat, 'Bluetooth' : blue, 'ClockSpeed' : clk, 'DualSim' : dsim, 'FrontCam' : frcam,
-         'FourG' : fourg, 'Internal' : intermem, 'Depth' : depth, 'Weight' : wt, 'NumCores' : numcore,
-         'PrimaryCam' : prcam, 'PxHeight' : pxht, 'PxWidth' : pxwd, 'Ram' : ram, 'ScHeight' : scht, 'ScWidth' : scwd,
-         'TalkTime' : taktim, 'ThreeG' : threeg, 'Touch' : touch, 'WiFi' : wifi}
-
-    print(inpdata)
     
-input()
+    if st.button("Predict"):
+        result = prediction(bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore,
+                  prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi)
+    st.success('The Price Range is {}'.format(result))
+    
+    
+    
+if __name__=='__main__':
+    main()
+    
+    
+    
