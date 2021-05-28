@@ -13,6 +13,8 @@ import joblib
 import streamlit as st
 
 
+model = joblib.load('SVM_Model.pkl')
+
 def prediction(bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore, 
 prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi):
 
