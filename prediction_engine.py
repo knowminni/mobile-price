@@ -58,4 +58,4 @@ def input():
 
     print(inpdata)
     
-  input()
+input()
