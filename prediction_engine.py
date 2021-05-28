@@ -12,57 +12,54 @@ warnings.filterwarnings('ignore')
 import joblib
 import streamlit as st
 
-model = joblib.load('SVM_Model.pkl')
 
-def prediction(bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore,
-                  prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi):
+def prediction(bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore, 
+prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi):
+
+   inputdata = [[bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore, 
+   prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi]]
     
-    inputdata = [[bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore,
-                  prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi]]
-    
-    pred = model.predict(inputdata)
-    return pred
-   
+   pred = model.predict(inputdata)
+   return pred
+
+  
 
 def main():
     
-    st.title('Mobile Price Prediction App')
-    st.header('Input Device Specifications: ')
+   st.title('Mobile Price Prediction App')
+   st.header('Input Device Specifications: ')
     
-    bat = st.number_input(label = 'Battery Capacity: ', min_value = 500, value = 500, format = '%d')
-    blue = st.checkbox('Bluetooth')
-    clk = st.number_input(label = 'Clock Speed: ', min_value = 0.5, max_value = 5.0, step = 0.1)
-    dsim = st.checkbox('Dual Sim')
-    frcam = st.number_input(label = 'Front Camera: ', min_value = 2, value = 128, format = '%d')
+   bat = st.number_input(label = 'Battery Capacity: ', min_value = 500, value = 500, format = '%d')
+   blue = st.checkbox('Bluetooth')
+   clk = st.number_input(label = 'Clock Speed: ', min_value = 0.5, max_value = 5.0, step = 0.1)
+   dsim = st.checkbox('Dual Sim')
+   frcam = st.number_input(label = 'Front Camera: ', min_value = 2, value = 128, format = '%d')
 
-    fourg = st.checkbox('4G Connectivity')
-    intermem = st.number_input(label = 'Internal Memory: ', min_value = 0.5, max_value = 1024.0)
-    depth = st.number_input(label = 'Depth: ', min_value = 0.1, max_value = 1.0)
-    wt = st.number_input(label = 'Weight: ', min_value= 30, max_value = 250)
-    numcore = st.number_input('CPU cores: ', min_value = 1, max_value = 16)
+   fourg = st.checkbox('4G Connectivity')
+   intermem = st.number_input(label = 'Internal Memory: ', min_value = 0.5, max_value = 1024.0)
+   depth = st.number_input(label = 'Depth: ', min_value = 0.1, max_value = 1.0)
+   wt = st.number_input(label = 'Weight: ', min_value= 30, max_value = 250)
+   numcore = st.number_input('CPU cores: ', min_value = 1, max_value = 16)
 
-    prcam = st.number_input(label = 'Primary Camera: ', min_value = 2, value = 128, format = '%d')
-    pxht = st.number_input(label = 'Pixel Height: ', min_value= 500, max_value = 1960)
-    pxwd = st.number_input(label = 'Pixel Width: ', min_value= 500, max_value = 1960)
-    ram = st.number_input(label = 'RAM: ', min_value = 0.5, max_value = 1024.0)
-    scht = st.number_input(label = 'Screen Height: ', min_value= 500, max_value = 1960)
-    scwd = st.number_input(label = 'Screen Width: ', min_value= 500, max_value = 1960)
+   prcam = st.number_input(label = 'Primary Camera: ', min_value = 2, value = 128, format = '%d')
+   pxht = st.number_input(label = 'Pixel Height: ', min_value= 500, max_value = 1960)
+   pxwd = st.number_input(label = 'Pixel Width: ', min_value= 500, max_value = 1960)
+   ram = st.number_input(label = 'RAM: ', min_value = 0.5, max_value = 1024.0)
+   scht = st.number_input(label = 'Screen Height: ', min_value= 500, max_value = 1960)
+   scwd = st.number_input(label = 'Screen Width: ', min_value= 500, max_value = 1960)
 
-    taktim = st.number_input(label = 'Talktime: ', min_value= 1, max_value = 200)
-    threeg = st.checkbox('3G Connectivity')
-    touch = st.checkbox('Touch Screen')
-    wifi = st.checkbox('WiFi Connectivity')
+   taktim = st.number_input(label = 'Talktime: ', min_value= 1, max_value = 200)
+   threeg = st.checkbox('3G Connectivity')
+   touch = st.checkbox('Touch Screen')
+   wifi = st.checkbox('WiFi Connectivity')
 
     
-    if st.button("Predict"):
-        result = prediction(bat, blue, clk, dsim, frcam, fourg, intermem, depth, wt, numcore,
-                  prcam, pxht, pxwd, ram, scht, scwd, taktim, threeg, touch, wifi)
-    st.success('The Price Range is {}'.format(result))
-    
-    
+   if st.button("Predict"):
+      result = prediction(bat, int(blue), clk, int(dsim), frcam, int(fourg), intermem, depth, wt, numcore,
+      prcam, pxht, pxwd, ram, scht, scwd, taktim, int(threeg), int(touch), int(wifi))
+   
+   st.success('The Price Range is {}'.format(result))
     
 if __name__=='__main__':
-    main()
-    
-    
+   main()
     
