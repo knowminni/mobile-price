@@ -1,7 +1,8 @@
-numpy
-pandas
-seaborn
-streamlit
-scikit-learn
-sklearn
-joblib
+numpy==1.19.4
+pandas==1.2.3
+seaborn==0.11.1
+streamlit==0.82.0
+scikit-learn==0.24.2
+sklearn==0.0
+scipy==1.5.4
+joblib==1.0.1
